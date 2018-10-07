@@ -6,7 +6,7 @@
 #endif
 
 typedef struct N {
-	Int e;
+	int e;
 	struct N *seg;
 	struct N *ant;
 } NodeBi;

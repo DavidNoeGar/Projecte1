@@ -3,7 +3,7 @@
 #include "llista.h"
 
 LlistaBidOr LLISTABIDOR_crea () {
-  LllistaBidOr l;
+  LlistaBidOr l;
   l.pri=(NodeBi*)malloc (sizeof(NodeBi));
   if (l.pri==NULL) {
     //Error
@@ -13,9 +13,7 @@ LlistaBidOr LLISTABIDOR_crea () {
        free(l.pri);
        //Error
     } else {
-       l.pri->e=ELEMENT_indefinit();
        l.pri->ant=NULL;
-       l.ult->e=ELEMENT_indefinit();
        l.ult->seg=NULL;
        l.pri->seg=l.ult;
        l.ult->ant=l.pri;
@@ -26,8 +24,8 @@ LlistaBidOr LLISTABIDOR_crea () {
 }
 
 void LLISTABIDOR_insereixOrdenat (LlistaBidOr *l, int e) {
-  Node *aux;
-  aux=(Node*)malloc(sizeof(Node));
+  NodeBi *aux;
+  aux=(NodeBi*)malloc(sizeof(NodeBi));
   if (aux==NULL) {
     //Error
   } else {
@@ -37,7 +35,7 @@ void LLISTABIDOR_insereixOrdenat (LlistaBidOr *l, int e) {
       l->pdi=l->pdi->seg;
     }
     aux->seg=l->pdi->seg;
-    aux->pdi=l->pdi;
+    aux->ant=l->pdi;
     l->pdi->seg->ant=aux;
     l->pdi->seg=aux;
   }
@@ -52,11 +50,11 @@ void LLISTADOR_vesFinal(LlistaBidOr *l) {
 }
 
 int LLISTABIDOR_inici(LlistaBidOr l) {
-  return l.pdi==l.pri.seg;
+  return l.pdi==l.pri->seg;
 }
 
 int LLISTABIDOR_final(LlistaBidOr l) {
-  return l.pdi==l.ult.ant;
+  return l.pdi==l.ult->ant;
 }
 
 void LLISTABIDOR_destrueixl(LlistaBidOr *l) {
@@ -72,16 +70,17 @@ void LLISTABIDOR_destrueixl(LlistaBidOr *l) {
     }
     l->ult=NULL;
     l->pdi=NULL;
+  }
 }
 
 int LLISTABIDOR_consulta (LlistaBidOr l) {
-  int e=ELEMENT_indefinit();
+  int e = 0;
   if (l.pri->seg==NULL && l.ult->ant==NULL) {
     //Error llista buida
   } else {
     e=l.pdi->e;
   }
-  resturn e;
+  return e;
 }
 
 void LLISTABIDOR_esborra(LlistaBidOr *l) {

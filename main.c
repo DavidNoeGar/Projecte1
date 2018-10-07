@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 
-#include "lista.h"
+#include "llista.h"
 
 void anadirElemento(LlistaBidOr *l) {
 	int e = 1;
@@ -9,8 +9,8 @@ void anadirElemento(LlistaBidOr *l) {
 	printf("Elemento a anadir: ");
 	do{
 		LLISTABIDOR_insereixOrdenat(l, e);
-		e = e++;
-	}while (e<10)
+		e = e + 1;
+	}while (e<10);
 	printf("Elemento %d anadido correctamente.\n", e);
 }
 
@@ -24,9 +24,9 @@ void quitarElemento(LlistaBidOr *l) {
 }
 
 void mostrar(LlistaBidOr l) {
-	int e;
+	int e = 0;
 	if (!LLISTABIDOR_buida(l) && !LLISTABIDOR_final(l)) {
-		LLISTABIDOR_consulta(l, &e);
+		e = LLISTABIDOR_consulta(l);
 		printf("El elemento es el %d.\n", e);
 	} else {
 		printf("La lista esta vacia o estas en el final.\n");
