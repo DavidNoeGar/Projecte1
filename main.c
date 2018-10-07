@@ -81,3 +81,12 @@ void mostrarMenu(LlistaBidOr *l) {
 		printf("¡Hemos avanzado!\n");
 	}
 }
+int main() {
+	LlistaBidOr l;
+
+	LLISTABIDOR_crea(&l);
+
+	mostrarMenu(&l);
+
+	LLISTABIDOR_destrueixl(&l);
+}
