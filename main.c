@@ -4,14 +4,12 @@
 #include "llista.h"
 
 void anadirElemento(LlistaBidOr *l) {
-	int e = 1;
-
-	printf("Elemento a anadir: ");
-	do{
+	int e;
+	printf("\tInserint els nombres del 0 al 10\n\n");
+	for (e = 0; e<=10; e++){
 		LLISTABIDOR_insereixOrdenat(l, e);
-		e = e + 1;
-	}while (e<10);
-	printf("Elemento %d anadido correctamente.\n", e);
+	}
+	printf("Elementos anadidos correctamente.\n");
 }
 
 void quitarElemento(LlistaBidOr *l) {
@@ -54,9 +52,6 @@ void mostrarMenu(LlistaBidOr *l) {
 		LLISTABIDOR_avanca(l);
 		printf("¡Hemos avanzado!\n");
 	}
-	printf("\tVamos inicio\n");
-	LLISTABIDOR_vesInici(l);
-	printf("¡Estem a l'inici!\n");
 	printf("\t¿Está Vacia?\n");
 	if (LLISTABIDOR_buida(*l)) {
 		printf("¡La lista esta vacia!\n");
