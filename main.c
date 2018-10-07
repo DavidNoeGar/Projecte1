@@ -1,5 +1,8 @@
 #include <stdio.h>
+<<<<<<< HEAD
 #include <stdlib.h>
+=======
+>>>>>>> 66b61448430714467b2681b5e636bc91504e7441
 #include <conio.h>
 
 #include "llista.h"
