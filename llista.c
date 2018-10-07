@@ -38,15 +38,36 @@ void LLISTABIDOR_insereixOrdenat (LlistaBidOr *l, int e) {
     l->ant->seg=aux;
   }}
 
-void LLITABIDOR_vesInici(LlistaBidOr *l) {}
+void LLITABIDOR_vesInici(LlistaBidOr *l) {
+  l->pdi=l->pri->seg;
+}
 
-void LLISTADOR_vesFinal(LlistaBidOr *l) {}
+void LLISTADOR_vesFinal(LlistaBidOr *l) {
+  l->pdi=l->ult->ant;
+}
 
-int LLISTABIDOR_inici(LlistaBidOr l) {}
+int LLISTABIDOR_inici(LlistaBidOr l) {
+  return l.pdi==l.pri.seg;
+}
 
-int LLISTABIDOR_final(LlistaBidOr l) {}
+int LLISTABIDOR_final(LlistaBidOr l) {
+  return l.pdi==l.ult.ant;
+}
 
-void LLISTABIDOR_destrueixl(LlistaBidOr *l) {}
+void LLISTABIDOR_destrueixl(LlistaBidOr *l) {
+  NodeBi *aux;
+  aux=(NodeBi*)malloc(sizeof(NodeBi));
+  if (aux==NULL) {
+    //Error
+  } else {
+    while (l->pri!=NULL) {
+       aux=l->pri;
+       l->pri=aux->seg;
+       free(aux);
+    }
+    l->ult=NULL;
+    l->pdi=NULL;
+}
 
 int LLISTABIDOR_consulta (LlistaBidOr l) {}
 
