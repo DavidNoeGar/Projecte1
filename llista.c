@@ -69,9 +69,28 @@ void LLISTABIDOR_destrueixl(LlistaBidOr *l) {
     l->pdi=NULL;
 }
 
-int LLISTABIDOR_consulta (LlistaBidOr l) {}
+int LLISTABIDOR_consulta (LlistaBidOr l) {
+  int e=ELEMENT_indefinit();
+  if (l.pri->seg==NULL && l.ult->ant==NULL) {
+    //Error llista buida
+  } else {
+    e=l.pdi->e;
+  }
+  resturn e;
+}
 
-void LLISTABIDOR_esborra(LlistaBidOr *l) {}
+void LLISTABIDOR_esborra(LlistaBidOr *l) {
+  NodeBi *aux;
+  if (l->pri->seg==NULL || l->ult->ant==NULL) {
+    //Error
+  } else {
+    aux=l->pdi;
+    l->pdi->ant->seg=l->pdi->seg;
+    l->pdi->seg->ant=l->pdi->ant;
+   l->pdi=l->pdi->seg;
+   free(aux);
+ }
+}
 
 void LLISTABIDOR_avanca (LlistaBidOr *l) {}
 
