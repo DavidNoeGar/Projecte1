@@ -36,7 +36,8 @@ void LLISTABIDOR_insereixOrdenat (LlistaBidOr *l, int e) {
     }
     aux->seg=l->ant->seg;
     l->ant->seg=aux;
-  }}
+  }
+}
 
 void LLITABIDOR_vesInici(LlistaBidOr *l) {
   l->pdi=l->pri->seg;
@@ -92,8 +93,22 @@ void LLISTABIDOR_esborra(LlistaBidOr *l) {
  }
 }
 
-void LLISTABIDOR_avanca (LlistaBidOr *l) {}
+void LLISTABIDOR_avanca (LlistaBidOr *l) {
+  if (l->pdi->seg==NULL) {
+    //Error
+  } else {
+     l->pdi=l->pdi->seg;
+  }
+}
 
-void LLISTABIDOR_retocedeix(LlistaBidOr *l) {}
+void LLISTABIDOR_retocedeix(LlistaBidOr *l) {
+  if (l->pdi->ant==NULL) {
+     //Error
+   } else {
+      l->pdi=l->pdi->ant;
+   }
+}
 
-int LLISTABIDOR_buida (LlistaBidOr l) {}
+int LLISTABIDOR_buida (LlistaBidOr l) {
+  return l.pri->seg==l.ult;
+}
