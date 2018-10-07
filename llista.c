@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "llista.h"
 
 LlistaBidOr LLISTABIDOR_crea () {
@@ -30,12 +32,14 @@ void LLISTABIDOR_insereixOrdenat (LlistaBidOr *l, int e) {
     //Error
   } else {
     aux->e=e;
-    l->ant=l->pri;
-    while (l->ant->seg!=NULL && e > l->ant->seg->e) {
-      l->ant=l->ant->seg;
+    l->pdi=l->pri;
+    while (l->pdi->seg!=NULL && e > l->pdi->seg->e) {
+      l->pdi=l->pdi->seg;
     }
-    aux->seg=l->ant->seg;
-    l->ant->seg=aux;
+    aux->seg=l->pdi->seg;
+    aux->pdi=l->pdi;
+    l->pdi->seg->ant=aux;
+    l->pdi->seg=aux;
   }
 }
 
